@@ -1,0 +1,940 @@
+{
+  "source": "data/raw/shot-data.csv",
+  "sha256": "25e5ea674e57f838f21062059630db795699d8499cf6af03699628df1b5c8af2",
+  "population": "All 13,269 supplied attempts, including blocks; private selection and season semantics remain unverified.",
+  "n": 13269,
+  "goals": 997,
+  "pooled_goal_rate": 0.07513753862386012,
+  "columns": [
+    "shooter_id",
+    "goalie_id",
+    "season",
+    "location_on_net",
+    "lateral_location_on_net",
+    "vertical_location_on_net",
+    "outcome",
+    "is_goal"
+  ],
+  "missing": {
+    "shooter_id": 0,
+    "goalie_id": 0,
+    "season": 0,
+    "location_on_net": 2688,
+    "lateral_location_on_net": 1187,
+    "vertical_location_on_net": 1187,
+    "outcome": 48,
+    "is_goal": 0
+  },
+  "goalies": {
+    "entities": 123,
+    "attempts_quantiles": {
+      "0.0": 1.0,
+      "0.1": 11.0,
+      "0.25": 30.5,
+      "0.5": 80.0,
+      "0.75": 169.5,
+      "0.9": 231.2,
+      "1.0": 430.0
+    },
+    "goals_quantiles": {
+      "0.0": 0.0,
+      "0.1": 0.0,
+      "0.25": 2.0,
+      "0.5": 6.0,
+      "0.75": 12.0,
+      "0.9": 19.0,
+      "1.0": 34.0
+    },
+    "opponents_quantiles": {
+      "0.0": 1.0,
+      "0.1": 5.0,
+      "0.25": 12.0,
+      "0.5": 22.0,
+      "0.75": 29.0,
+      "0.9": 33.0,
+      "1.0": 35.0
+    },
+    "season_coverage_counts": {
+      "1": 28,
+      "2": 21,
+      "3": 27,
+      "4": 47
+    },
+    "attempts_below": {
+      "10": 12,
+      "25": 29,
+      "50": 49,
+      "100": 68,
+      "200": 98,
+      "300": 118,
+      "500": 123
+    },
+    "goals_below": {
+      "1": 14,
+      "5": 52,
+      "10": 78,
+      "20": 113,
+      "30": 121
+    },
+    "entity_season_attempts_quantiles": {
+      "0.0": 1.0,
+      "0.1": 3.0,
+      "0.25": 14.0,
+      "0.5": 32.0,
+      "0.75": 56.0,
+      "0.9": 89.19999999999999,
+      "1.0": 160.0
+    },
+    "entity_season_goals_quantiles": {
+      "0.0": 0.0,
+      "0.1": 0.0,
+      "0.25": 1.0,
+      "0.5": 2.0,
+      "0.75": 5.0,
+      "0.9": 7.0,
+      "1.0": 13.0
+    },
+    "entity_season_count": 339,
+    "entity_seasons_zero_goals": 74
+  },
+  "shooters": {
+    "entities": 35,
+    "attempts_quantiles": {
+      "0.0": 61.0,
+      "0.1": 117.20000000000002,
+      "0.25": 201.0,
+      "0.5": 284.0,
+      "0.75": 534.5,
+      "0.9": 725.6,
+      "1.0": 1039.0
+    },
+    "goals_quantiles": {
+      "0.0": 2.0,
+      "0.1": 6.0,
+      "0.25": 11.5,
+      "0.5": 20.0,
+      "0.75": 42.0,
+      "0.9": 59.80000000000001,
+      "1.0": 95.0
+    },
+    "opponents_quantiles": {
+      "0.0": 29.0,
+      "0.1": 51.6,
+      "0.25": 64.5,
+      "0.5": 71.0,
+      "0.75": 83.0,
+      "0.9": 88.2,
+      "1.0": 94.0
+    },
+    "season_coverage_counts": {
+      "3": 3,
+      "4": 32
+    },
+    "attempts_below": {
+      "10": 0,
+      "25": 0,
+      "50": 0,
+      "100": 3,
+      "200": 9,
+      "300": 18,
+      "500": 26
+    },
+    "goals_below": {
+      "1": 0,
+      "5": 2,
+      "10": 6,
+      "20": 17,
+      "30": 21
+    },
+    "entity_season_attempts_quantiles": {
+      "0.0": 1.0,
+      "0.1": 15.200000000000003,
+      "0.25": 34.0,
+      "0.5": 72.0,
+      "0.75": 138.0,
+      "0.9": 216.8,
+      "1.0": 338.0
+    },
+    "entity_season_goals_quantiles": {
+      "0.0": 0.0,
+      "0.1": 0.6000000000000014,
+      "0.25": 2.0,
+      "0.5": 5.0,
+      "0.75": 10.0,
+      "0.9": 17.400000000000006,
+      "1.0": 35.0
+    },
+    "entity_season_count": 137,
+    "entity_seasons_zero_goals": 14
+  },
+  "overlap": {
+    "observed_pairs": 2511,
+    "possible_pairs": 4305,
+    "pair_exposure_quantiles": {
+      "0.0": 1.0,
+      "0.1": 1.0,
+      "0.25": 2.0,
+      "0.5": 3.0,
+      "0.75": 7.0,
+      "0.9": 12.0,
+      "1.0": 46.0
+    },
+    "pairs_below": {
+      "2": 488,
+      "5": 1512,
+      "10": 2122,
+      "20": 2453
+    },
+    "components": [
+      {
+        "shooters": 35,
+        "goalies": 123
+      }
+    ]
+  },
+  "seasons": [
+    {
+      "season": 2021,
+      "n": 3702,
+      "goals": 301,
+      "goalies": {
+        "entities": 102,
+        "attempts_quantiles": {
+          "0.0": 1.0,
+          "0.1": 2.0,
+          "0.25": 9.25,
+          "0.5": 27.0,
+          "0.75": 55.75,
+          "0.9": 84.80000000000001,
+          "1.0": 126.0
+        },
+        "goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 0.0,
+          "0.25": 1.0,
+          "0.5": 2.0,
+          "0.75": 4.75,
+          "0.9": 7.0,
+          "1.0": 13.0
+        },
+        "opponents_quantiles": {
+          "0.0": 1.0,
+          "0.1": 1.0,
+          "0.25": 5.0,
+          "0.5": 10.0,
+          "0.75": 18.0,
+          "0.9": 22.900000000000006,
+          "1.0": 26.0
+        },
+        "season_coverage_counts": {
+          "1": 102
+        },
+        "attempts_below": {
+          "10": 26,
+          "25": 48,
+          "50": 69,
+          "100": 98,
+          "200": 102,
+          "300": 102,
+          "500": 102
+        },
+        "goals_below": {
+          "1": 25,
+          "5": 76,
+          "10": 96,
+          "20": 102,
+          "30": 102
+        },
+        "entity_season_attempts_quantiles": {
+          "0.0": 1.0,
+          "0.1": 2.0,
+          "0.25": 9.25,
+          "0.5": 27.0,
+          "0.75": 55.75,
+          "0.9": 84.80000000000001,
+          "1.0": 126.0
+        },
+        "entity_season_goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 0.0,
+          "0.25": 1.0,
+          "0.5": 2.0,
+          "0.75": 4.75,
+          "0.9": 7.0,
+          "1.0": 13.0
+        },
+        "entity_season_count": 102,
+        "entity_seasons_zero_goals": 25
+      },
+      "shooters": {
+        "entities": 35,
+        "attempts_quantiles": {
+          "0.0": 1.0,
+          "0.1": 22.200000000000003,
+          "0.25": 37.5,
+          "0.5": 95.0,
+          "0.75": 162.0,
+          "0.9": 201.20000000000002,
+          "1.0": 323.0
+        },
+        "goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 1.0,
+          "0.25": 2.0,
+          "0.5": 8.0,
+          "0.75": 12.5,
+          "0.9": 16.6,
+          "1.0": 35.0
+        },
+        "opponents_quantiles": {
+          "0.0": 1.0,
+          "0.1": 12.200000000000001,
+          "0.25": 22.0,
+          "0.5": 35.0,
+          "0.75": 43.5,
+          "0.9": 49.0,
+          "1.0": 55.0
+        },
+        "season_coverage_counts": {
+          "1": 35
+        },
+        "attempts_below": {
+          "10": 2,
+          "25": 5,
+          "50": 12,
+          "100": 19,
+          "200": 31,
+          "300": 34,
+          "500": 35
+        },
+        "goals_below": {
+          "1": 3,
+          "5": 13,
+          "10": 21,
+          "20": 32,
+          "30": 34
+        },
+        "entity_season_attempts_quantiles": {
+          "0.0": 1.0,
+          "0.1": 22.200000000000003,
+          "0.25": 37.5,
+          "0.5": 95.0,
+          "0.75": 162.0,
+          "0.9": 201.20000000000002,
+          "1.0": 323.0
+        },
+        "entity_season_goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 1.0,
+          "0.25": 2.0,
+          "0.5": 8.0,
+          "0.75": 12.5,
+          "0.9": 16.6,
+          "1.0": 35.0
+        },
+        "entity_season_count": 35,
+        "entity_seasons_zero_goals": 3
+      },
+      "components": [
+        {
+          "shooters": 35,
+          "goalies": 102
+        }
+      ]
+    },
+    {
+      "season": 2022,
+      "n": 4164,
+      "goals": 295,
+      "goalies": {
+        "entities": 93,
+        "attempts_quantiles": {
+          "0.0": 1.0,
+          "0.1": 4.0,
+          "0.25": 20.0,
+          "0.5": 37.0,
+          "0.75": 61.0,
+          "0.9": 92.0,
+          "1.0": 136.0
+        },
+        "goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 0.0,
+          "0.25": 1.0,
+          "0.5": 2.0,
+          "0.75": 5.0,
+          "0.9": 7.0,
+          "1.0": 11.0
+        },
+        "opponents_quantiles": {
+          "0.0": 1.0,
+          "0.1": 2.400000000000002,
+          "0.25": 9.0,
+          "0.5": 14.0,
+          "0.75": 21.0,
+          "0.9": 24.0,
+          "1.0": 29.0
+        },
+        "season_coverage_counts": {
+          "1": 93
+        },
+        "attempts_below": {
+          "10": 12,
+          "25": 29,
+          "50": 57,
+          "100": 84,
+          "200": 93,
+          "300": 93,
+          "500": 93
+        },
+        "goals_below": {
+          "1": 14,
+          "5": 66,
+          "10": 91,
+          "20": 93,
+          "30": 93
+        },
+        "entity_season_attempts_quantiles": {
+          "0.0": 1.0,
+          "0.1": 4.0,
+          "0.25": 20.0,
+          "0.5": 37.0,
+          "0.75": 61.0,
+          "0.9": 92.0,
+          "1.0": 136.0
+        },
+        "entity_season_goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 0.0,
+          "0.25": 1.0,
+          "0.5": 2.0,
+          "0.75": 5.0,
+          "0.9": 7.0,
+          "1.0": 11.0
+        },
+        "entity_season_count": 93,
+        "entity_seasons_zero_goals": 14
+      },
+      "shooters": {
+        "entities": 32,
+        "attempts_quantiles": {
+          "0.0": 25.0,
+          "0.1": 45.1,
+          "0.25": 65.25,
+          "0.5": 112.0,
+          "0.75": 192.25,
+          "0.9": 238.8,
+          "1.0": 320.0
+        },
+        "goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 2.0,
+          "0.25": 3.75,
+          "0.5": 7.0,
+          "0.75": 12.5,
+          "0.9": 20.0,
+          "1.0": 25.0
+        },
+        "opponents_quantiles": {
+          "0.0": 20.0,
+          "0.1": 24.3,
+          "0.25": 35.0,
+          "0.5": 43.0,
+          "0.75": 50.25,
+          "0.9": 53.0,
+          "1.0": 55.0
+        },
+        "season_coverage_counts": {
+          "1": 32
+        },
+        "attempts_below": {
+          "10": 0,
+          "25": 0,
+          "50": 5,
+          "100": 13,
+          "200": 25,
+          "300": 30,
+          "500": 32
+        },
+        "goals_below": {
+          "1": 2,
+          "5": 9,
+          "10": 20,
+          "20": 26,
+          "30": 32
+        },
+        "entity_season_attempts_quantiles": {
+          "0.0": 25.0,
+          "0.1": 45.1,
+          "0.25": 65.25,
+          "0.5": 112.0,
+          "0.75": 192.25,
+          "0.9": 238.8,
+          "1.0": 320.0
+        },
+        "entity_season_goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 2.0,
+          "0.25": 3.75,
+          "0.5": 7.0,
+          "0.75": 12.5,
+          "0.9": 20.0,
+          "1.0": 25.0
+        },
+        "entity_season_count": 32,
+        "entity_seasons_zero_goals": 2
+      },
+      "components": [
+        {
+          "shooters": 32,
+          "goalies": 93
+        }
+      ]
+    },
+    {
+      "season": 2023,
+      "n": 4204,
+      "goals": 309,
+      "goalies": {
+        "entities": 85,
+        "attempts_quantiles": {
+          "0.0": 1.0,
+          "0.1": 9.4,
+          "0.25": 21.0,
+          "0.5": 48.0,
+          "0.75": 71.0,
+          "0.9": 96.80000000000003,
+          "1.0": 160.0
+        },
+        "goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 0.0,
+          "0.25": 1.0,
+          "0.5": 4.0,
+          "0.75": 5.0,
+          "0.9": 7.6000000000000085,
+          "1.0": 11.0
+        },
+        "opponents_quantiles": {
+          "0.0": 1.0,
+          "0.1": 4.4,
+          "0.25": 8.0,
+          "0.5": 17.0,
+          "0.75": 22.0,
+          "0.9": 25.60000000000001,
+          "1.0": 30.0
+        },
+        "season_coverage_counts": {
+          "1": 85
+        },
+        "attempts_below": {
+          "10": 9,
+          "25": 27,
+          "50": 46,
+          "100": 77,
+          "200": 85,
+          "300": 85,
+          "500": 85
+        },
+        "goals_below": {
+          "1": 12,
+          "5": 53,
+          "10": 83,
+          "20": 85,
+          "30": 85
+        },
+        "entity_season_attempts_quantiles": {
+          "0.0": 1.0,
+          "0.1": 9.4,
+          "0.25": 21.0,
+          "0.5": 48.0,
+          "0.75": 71.0,
+          "0.9": 96.80000000000003,
+          "1.0": 160.0
+        },
+        "entity_season_goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 0.0,
+          "0.25": 1.0,
+          "0.5": 4.0,
+          "0.75": 5.0,
+          "0.9": 7.6000000000000085,
+          "1.0": 11.0
+        },
+        "entity_season_count": 85,
+        "entity_seasons_zero_goals": 12
+      },
+      "shooters": {
+        "entities": 35,
+        "attempts_quantiles": {
+          "0.0": 16.0,
+          "0.1": 26.400000000000002,
+          "0.25": 44.5,
+          "0.5": 120.0,
+          "0.75": 158.0,
+          "0.9": 241.8,
+          "1.0": 338.0
+        },
+        "goals_quantiles": {
+          "0.0": 1.0,
+          "0.1": 1.0,
+          "0.25": 3.0,
+          "0.5": 6.0,
+          "0.75": 13.5,
+          "0.9": 19.800000000000004,
+          "1.0": 30.0
+        },
+        "opponents_quantiles": {
+          "0.0": 11.0,
+          "0.1": 17.4,
+          "0.25": 26.5,
+          "0.5": 43.0,
+          "0.75": 48.5,
+          "0.9": 52.6,
+          "1.0": 56.0
+        },
+        "season_coverage_counts": {
+          "1": 35
+        },
+        "attempts_below": {
+          "10": 0,
+          "25": 4,
+          "50": 10,
+          "100": 17,
+          "200": 29,
+          "300": 33,
+          "500": 35
+        },
+        "goals_below": {
+          "1": 0,
+          "5": 14,
+          "10": 22,
+          "20": 31,
+          "30": 34
+        },
+        "entity_season_attempts_quantiles": {
+          "0.0": 16.0,
+          "0.1": 26.400000000000002,
+          "0.25": 44.5,
+          "0.5": 120.0,
+          "0.75": 158.0,
+          "0.9": 241.8,
+          "1.0": 338.0
+        },
+        "entity_season_goals_quantiles": {
+          "0.0": 1.0,
+          "0.1": 1.0,
+          "0.25": 3.0,
+          "0.5": 6.0,
+          "0.75": 13.5,
+          "0.9": 19.800000000000004,
+          "1.0": 30.0
+        },
+        "entity_season_count": 35,
+        "entity_seasons_zero_goals": 0
+      },
+      "components": [
+        {
+          "shooters": 35,
+          "goalies": 85
+        }
+      ]
+    },
+    {
+      "season": 2024,
+      "n": 1199,
+      "goals": 92,
+      "goalies": {
+        "entities": 59,
+        "attempts_quantiles": {
+          "0.0": 1.0,
+          "0.1": 2.0,
+          "0.25": 9.5,
+          "0.5": 18.0,
+          "0.75": 31.5,
+          "0.9": 39.0,
+          "1.0": 57.0
+        },
+        "goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 0.0,
+          "0.25": 0.0,
+          "0.5": 1.0,
+          "0.75": 3.0,
+          "0.9": 4.0,
+          "1.0": 6.0
+        },
+        "opponents_quantiles": {
+          "0.0": 1.0,
+          "0.1": 1.0,
+          "0.25": 4.5,
+          "0.5": 8.0,
+          "0.75": 13.0,
+          "0.9": 17.0,
+          "1.0": 20.0
+        },
+        "season_coverage_counts": {
+          "1": 59
+        },
+        "attempts_below": {
+          "10": 15,
+          "25": 38,
+          "50": 58,
+          "100": 59,
+          "200": 59,
+          "300": 59,
+          "500": 59
+        },
+        "goals_below": {
+          "1": 23,
+          "5": 55,
+          "10": 59,
+          "20": 59,
+          "30": 59
+        },
+        "entity_season_attempts_quantiles": {
+          "0.0": 1.0,
+          "0.1": 2.0,
+          "0.25": 9.5,
+          "0.5": 18.0,
+          "0.75": 31.5,
+          "0.9": 39.0,
+          "1.0": 57.0
+        },
+        "entity_season_goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 0.0,
+          "0.25": 0.0,
+          "0.5": 1.0,
+          "0.75": 3.0,
+          "0.9": 4.0,
+          "1.0": 6.0
+        },
+        "entity_season_count": 59,
+        "entity_seasons_zero_goals": 23
+      },
+      "shooters": {
+        "entities": 35,
+        "attempts_quantiles": {
+          "0.0": 3.0,
+          "0.1": 8.200000000000001,
+          "0.25": 14.0,
+          "0.5": 29.0,
+          "0.75": 48.0,
+          "0.9": 78.80000000000001,
+          "1.0": 86.0
+        },
+        "goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 0.0,
+          "0.25": 0.5,
+          "0.5": 2.0,
+          "0.75": 5.0,
+          "0.9": 5.600000000000001,
+          "1.0": 8.0
+        },
+        "opponents_quantiles": {
+          "0.0": 3.0,
+          "0.1": 6.0,
+          "0.25": 10.5,
+          "0.5": 14.0,
+          "0.75": 19.0,
+          "0.9": 22.800000000000004,
+          "1.0": 26.0
+        },
+        "season_coverage_counts": {
+          "1": 35
+        },
+        "attempts_below": {
+          "10": 4,
+          "25": 16,
+          "50": 27,
+          "100": 35,
+          "200": 35,
+          "300": 35,
+          "500": 35
+        },
+        "goals_below": {
+          "1": 9,
+          "5": 25,
+          "10": 35,
+          "20": 35,
+          "30": 35
+        },
+        "entity_season_attempts_quantiles": {
+          "0.0": 3.0,
+          "0.1": 8.200000000000001,
+          "0.25": 14.0,
+          "0.5": 29.0,
+          "0.75": 48.0,
+          "0.9": 78.80000000000001,
+          "1.0": 86.0
+        },
+        "entity_season_goals_quantiles": {
+          "0.0": 0.0,
+          "0.1": 0.0,
+          "0.25": 0.5,
+          "0.5": 2.0,
+          "0.75": 5.0,
+          "0.9": 5.600000000000001,
+          "1.0": 8.0
+        },
+        "entity_season_count": 35,
+        "entity_seasons_zero_goals": 9
+      },
+      "components": [
+        {
+          "shooters": 35,
+          "goalies": 59
+        }
+      ]
+    }
+  ],
+  "adjacent_seasons": [
+    {
+      "from": 2021,
+      "to": 2022,
+      "goalies_prior": 102,
+      "goalies_later": 93,
+      "goalies_in_both": 79,
+      "goalies_later_without_previous_season": 14,
+      "later_attempts_with_previous_season_goalie": 3943,
+      "shooters_in_both": 32
+    },
+    {
+      "from": 2022,
+      "to": 2023,
+      "goalies_prior": 93,
+      "goalies_later": 85,
+      "goalies_in_both": 74,
+      "goalies_later_without_previous_season": 11,
+      "later_attempts_with_previous_season_goalie": 4009,
+      "shooters_in_both": 32
+    },
+    {
+      "from": 2023,
+      "to": 2024,
+      "goalies_prior": 85,
+      "goalies_later": 59,
+      "goalies_in_both": 56,
+      "goalies_later_without_previous_season": 3,
+      "later_attempts_with_previous_season_goalie": 1156,
+      "shooters_in_both": 35
+    }
+  ],
+  "cumulative_prior_support": [
+    {
+      "test_season": 2022,
+      "test_attempts": 4164,
+      "test_goalies": 93,
+      "prior_n_for_test_goalies_quantiles": {
+        "0.0": 0.0,
+        "0.1": 0.0,
+        "0.25": 3.0,
+        "0.5": 30.0,
+        "0.75": 57.0,
+        "0.9": 86.6,
+        "1.0": 126.0
+      },
+      "test_goalies_with_prior_n_at_least": {
+        "1": 79,
+        "25": 50,
+        "50": 31,
+        "100": 4,
+        "200": 0
+      },
+      "test_attempts_with_goalie_prior_n_at_least": {
+        "1": 3943,
+        "25": 2887,
+        "50": 2089,
+        "100": 375,
+        "200": 0
+      }
+    },
+    {
+      "test_season": 2023,
+      "test_attempts": 4204,
+      "test_goalies": 85,
+      "prior_n_for_test_goalies_quantiles": {
+        "0.0": 0.0,
+        "0.1": 5.800000000000001,
+        "0.25": 26.0,
+        "0.5": 65.0,
+        "0.75": 131.0,
+        "0.9": 160.0,
+        "1.0": 252.0
+      },
+      "test_goalies_with_prior_n_at_least": {
+        "1": 79,
+        "25": 65,
+        "50": 52,
+        "100": 30,
+        "200": 4
+      },
+      "test_attempts_with_goalie_prior_n_at_least": {
+        "1": 4092,
+        "25": 3700,
+        "50": 2977,
+        "100": 2101,
+        "200": 453
+      }
+    },
+    {
+      "test_season": 2024,
+      "test_attempts": 1199,
+      "test_goalies": 59,
+      "prior_n_for_test_goalies_quantiles": {
+        "0.0": 0.0,
+        "0.1": 28.80000000000001,
+        "0.25": 94.0,
+        "0.5": 133.0,
+        "0.75": 205.5,
+        "0.9": 262.8,
+        "1.0": 401.0
+      },
+      "test_goalies_with_prior_n_at_least": {
+        "1": 58,
+        "25": 53,
+        "50": 51,
+        "100": 42,
+        "200": 16
+      },
+      "test_attempts_with_goalie_prior_n_at_least": {
+        "1": 1197,
+        "25": 1110,
+        "50": 1087,
+        "100": 917,
+        "200": 369
+      }
+    }
+  ],
+  "precision_reference": {
+    "interpretation": "Illustration using independent identical Bernoulli attempts at the pooled conversion rate. These are neither fitted ability intervals nor covariate-adjusted precision guarantees. Context, dependence, selection and joint parameter estimation change precision.",
+    "at_median_exposure": {
+      "goalies": {
+        "median_n": 80.0,
+        "binomial_se_at_pooled_rate": 0.02947284532273056,
+        "normal_95_halfwidth_at_pooled_rate": 0.057766776832551894,
+        "known_baseline_logit_effect_se": 0.4241192142503979
+      },
+      "shooters": {
+        "median_n": 284.0,
+        "binomial_se_at_pooled_rate": 0.015642562120544663,
+        "normal_95_halfwidth_at_pooled_rate": 0.03065942175626754,
+        "known_baseline_logit_effect_se": 0.22509910674663677
+      }
+    },
+    "n_needed_for_normal_95_rate_halfwidth": {
+      "0.02": 668,
+      "0.03": 297,
+      "0.05": 107
+    }
+  },
+  "limits": [
+    "IDs are anonymous and have no NHL crosswalk in this file.",
+    "All-attempt goal conversion includes shooter mix, blocks and misses; it is not goalie save percentage.",
+    "Graph connectivity allows comparisons under a constrained model; it establishes neither precise effects nor predictive improvement.",
+    "Future goalie recurrence supports historical validation, but short histories and four season labels limit it.",
+    "Counts can motivate strong pooling or a simpler scope; incremental forecast benefit requires a matched temporal comparison."
+  ]
+}

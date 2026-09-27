@@ -1,0 +1,462 @@
+{
+  "protocol": {
+    "source": "data/raw/shot-data.csv",
+    "sha256": "25e5ea674e57f838f21062059630db795699d8499cf6af03699628df1b5c8af2",
+    "source_note": "Original supplied CSV, retained byte-for-byte in the bundle. This historical ridge/MAP analysis uses all 13,269 rows; the final notebook uses 13,224 cleaned rows and a Bayesian model.",
+    "target": "Goal probability per recorded attempt, including blocks and misses.",
+    "model": "logit(p) = training-season intercept + pooled shooter effect + optional pooled goalie effect.",
+    "objective": "Binomial negative log likelihood + 0.5 * penalty * sum(effect squared).",
+    "grid": [
+      0.3,
+      1.0,
+      3.0,
+      10.0,
+      30.0,
+      100.0,
+      300.0,
+      1000.0,
+      null
+    ],
+    "seed": 20260927,
+    "validation": "Expanding windows. Test 2023 after tuning on 2021->2022. Test 2024 after tuning on 2021->2022 and 2021:2022->2023; equal fold weighting. Each arm tunes shooter penalty separately. Primary loss: mean shot log loss.",
+    "future_intercept": "Carry latest training-season intercept; exposure-weighted average intercept sensitivity.",
+    "unknown_identity": "Zero identity effect, with the same training-only intercept.",
+    "limitations": [
+      "Exploratory historical validation; these years were previously inspected.",
+      "Only four season labels and no dates/games; within-season forecasting is unavailable.",
+      "2024 coverage is smaller and may be incomplete.",
+      "Missing shot context and team means a goalie effect is an opponent association, not isolated stopping talent.",
+      "Cluster intervals condition on fitted models/selection, resample one identity dimension at a time, and cannot recover missing game dependence.",
+      "Ridge strengths selected for prediction are not estimates of population talent variance."
+    ]
+  },
+  "tests": [
+    {
+      "test_season": 2023,
+      "intercept_policy": "latest",
+      "n": 4204,
+      "goals": 309,
+      "selected": {
+        "shooter_only": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": null,
+          "validation_loss": 0.25640265306886934
+        },
+        "goalie_allowed": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": 30.0,
+          "validation_loss": 0.25630023772150645
+        },
+        "finite_goalie": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": 30.0,
+          "validation_loss": 0.25630023772150645
+        }
+      },
+      "scores": {
+        "shooter_only": {
+          "logloss": 0.26235950307432904,
+          "brier": 0.06806342018035212,
+          "equal_shooter_logloss": 0.24949107188556588,
+          "equal_shooter_brier": 0.0637415432260854
+        },
+        "goalie_allowed": {
+          "logloss": 0.2623668777920261,
+          "brier": 0.06806303360410072,
+          "equal_shooter_logloss": 0.24951978694699456,
+          "equal_shooter_brier": 0.0637479080005554
+        },
+        "finite_goalie": {
+          "logloss": 0.2623668777920261,
+          "brier": 0.06806303360410072,
+          "equal_shooter_logloss": 0.24951978694699456,
+          "equal_shooter_brier": 0.0637479080005554
+        }
+      },
+      "comparisons": {
+        "goalie_allowed": {
+          "delta_logloss": 7.3747176970491855e-06,
+          "relative_improvement_pct": -0.0028109207444869475,
+          "goalie_cluster_interval": [
+            -0.0005411832148883765,
+            0.0005921204059449532
+          ],
+          "shooter_cluster_interval": [
+            -0.0005361858523064549,
+            0.0006016085898404184
+          ]
+        },
+        "finite_goalie": {
+          "delta_logloss": 7.3747176970491855e-06,
+          "relative_improvement_pct": -0.0028109207444869475,
+          "goalie_cluster_interval": [
+            -0.0005411832148883765,
+            0.0005921204059449532
+          ],
+          "shooter_cluster_interval": [
+            -0.0005361858523064549,
+            0.0006016085898404184
+          ]
+        }
+      }
+    },
+    {
+      "test_season": 2024,
+      "intercept_policy": "latest",
+      "n": 1199,
+      "goals": 92,
+      "selected": {
+        "shooter_only": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": null,
+          "validation_loss": 0.25938107807159916
+        },
+        "goalie_allowed": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": 100.0,
+          "validation_loss": 0.2593290134903899
+        },
+        "finite_goalie": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": 100.0,
+          "validation_loss": 0.2593290134903899
+        }
+      },
+      "scores": {
+        "shooter_only": {
+          "logloss": 0.2714998390674706,
+          "brier": 0.07095219300812314,
+          "equal_shooter_logloss": 0.26628821559689,
+          "equal_shooter_brier": 0.06942736688355508
+        },
+        "goalie_allowed": {
+          "logloss": 0.27158412489451367,
+          "brier": 0.0709679124263035,
+          "equal_shooter_logloss": 0.26605340727432,
+          "equal_shooter_brier": 0.0694016965007469
+        },
+        "finite_goalie": {
+          "logloss": 0.27158412489451367,
+          "brier": 0.0709679124263035,
+          "equal_shooter_logloss": 0.26605340727432,
+          "equal_shooter_brier": 0.0694016965007469
+        }
+      },
+      "comparisons": {
+        "goalie_allowed": {
+          "delta_logloss": 8.42858270430298e-05,
+          "relative_improvement_pct": -0.031044521916671886,
+          "goalie_cluster_interval": [
+            -0.00039787019152536814,
+            0.0005465143551956412
+          ],
+          "shooter_cluster_interval": [
+            -0.0002728517648818013,
+            0.00038149367353076334
+          ]
+        },
+        "finite_goalie": {
+          "delta_logloss": 8.42858270430298e-05,
+          "relative_improvement_pct": -0.031044521916671886,
+          "goalie_cluster_interval": [
+            -0.00039787019152536814,
+            0.0005465143551956412
+          ],
+          "shooter_cluster_interval": [
+            -0.0002728517648818013,
+            0.00038149367353076334
+          ]
+        }
+      }
+    },
+    {
+      "test_season": 2023,
+      "intercept_policy": "average",
+      "n": 4204,
+      "goals": 309,
+      "selected": {
+        "shooter_only": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": null,
+          "validation_loss": 0.25640265306886934
+        },
+        "goalie_allowed": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": 30.0,
+          "validation_loss": 0.25630023772150645
+        },
+        "finite_goalie": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": 30.0,
+          "validation_loss": 0.25630023772150645
+        }
+      },
+      "scores": {
+        "shooter_only": {
+          "logloss": 0.26234721613928463,
+          "brier": 0.06806130904359056,
+          "equal_shooter_logloss": 0.24968119173887768,
+          "equal_shooter_brier": 0.06376739844351942
+        },
+        "goalie_allowed": {
+          "logloss": 0.2623841420481766,
+          "brier": 0.06806640642169551,
+          "equal_shooter_logloss": 0.24971446252555254,
+          "equal_shooter_brier": 0.06377598627960894
+        },
+        "finite_goalie": {
+          "logloss": 0.2623841420481766,
+          "brier": 0.06806640642169551,
+          "equal_shooter_logloss": 0.24971446252555254,
+          "equal_shooter_brier": 0.06377598627960894
+        }
+      },
+      "comparisons": {
+        "goalie_allowed": {
+          "delta_logloss": 3.692590889201501e-05,
+          "relative_improvement_pct": -0.014075205155754507,
+          "goalie_cluster_interval": [
+            -0.0005152960236881563,
+            0.0006449905912135557
+          ],
+          "shooter_cluster_interval": [
+            -0.0004935612561906946,
+            0.000627966178734504
+          ]
+        },
+        "finite_goalie": {
+          "delta_logloss": 3.692590889201501e-05,
+          "relative_improvement_pct": -0.014075205155754507,
+          "goalie_cluster_interval": [
+            -0.0005152960236881563,
+            0.0006449905912135557
+          ],
+          "shooter_cluster_interval": [
+            -0.0004935612561906946,
+            0.000627966178734504
+          ]
+        }
+      }
+    },
+    {
+      "test_season": 2024,
+      "intercept_policy": "average",
+      "n": 1199,
+      "goals": 92,
+      "selected": {
+        "shooter_only": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": null,
+          "validation_loss": 0.259374934604077
+        },
+        "goalie_allowed": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": 100.0,
+          "validation_loss": 0.2593281946640093
+        },
+        "finite_goalie": {
+          "shooter_penalty": 30.0,
+          "goalie_penalty": 100.0,
+          "validation_loss": 0.2593281946640093
+        }
+      },
+      "scores": {
+        "shooter_only": {
+          "logloss": 0.27143725465716556,
+          "brier": 0.0709462747794545,
+          "equal_shooter_logloss": 0.2662126642967658,
+          "equal_shooter_brier": 0.06941665775105178
+        },
+        "goalie_allowed": {
+          "logloss": 0.27151623724819346,
+          "brier": 0.07096170900525546,
+          "equal_shooter_logloss": 0.26597004055322276,
+          "equal_shooter_brier": 0.06938949444610956
+        },
+        "finite_goalie": {
+          "logloss": 0.27151623724819346,
+          "brier": 0.07096170900525546,
+          "equal_shooter_logloss": 0.26597004055322276,
+          "equal_shooter_brier": 0.06938949444610956
+        }
+      },
+      "comparisons": {
+        "goalie_allowed": {
+          "delta_logloss": 7.898259102790568e-05,
+          "relative_improvement_pct": -0.02909791845915306,
+          "goalie_cluster_interval": [
+            -0.0004099803117235753,
+            0.0005498877872266139
+          ],
+          "shooter_cluster_interval": [
+            -0.00028219552595321924,
+            0.00037868288101614153
+          ]
+        },
+        "finite_goalie": {
+          "delta_logloss": 7.898259102790568e-05,
+          "relative_improvement_pct": -0.02909791845915306,
+          "goalie_cluster_interval": [
+            -0.0004099803117235753,
+            0.0005498877872266139
+          ],
+          "shooter_cluster_interval": [
+            -0.00028219552595321924,
+            0.00037868288101614153
+          ]
+        }
+      }
+    }
+  ],
+  "combined": [
+    {
+      "intercept_policy": "average",
+      "n": 5403,
+      "baseline": {
+        "logloss": 0.2643644206891531,
+        "brier": 0.06870152261332976,
+        "equal_shooter_logloss": 0.2505387797666931,
+        "equal_shooter_brier": 0.06408793626700182
+      },
+      "comparisons": {
+        "goalie_allowed": {
+          "scores": {
+            "logloss": 0.26441067955415853,
+            "brier": 0.06870891388008683,
+            "equal_shooter_logloss": 0.2505043437236028,
+            "equal_shooter_brier": 0.06408720479587325
+          },
+          "delta_logloss": 4.625886500545813e-05,
+          "relative_improvement_pct": -0.017498143239120124,
+          "goalie_cluster_interval": [
+            -0.0003973738223659701,
+            0.0005150081091175162
+          ],
+          "shooter_cluster_interval": [
+            -0.0003564605473681252,
+            0.00047958563698297096
+          ]
+        },
+        "finite_goalie": {
+          "scores": {
+            "logloss": 0.26441067955415853,
+            "brier": 0.06870891388008683,
+            "equal_shooter_logloss": 0.2505043437236028,
+            "equal_shooter_brier": 0.06408720479587325
+          },
+          "delta_logloss": 4.625886500545813e-05,
+          "relative_improvement_pct": -0.017498143239120124,
+          "goalie_cluster_interval": [
+            -0.0003973738223659701,
+            0.0005150081091175162
+          ],
+          "shooter_cluster_interval": [
+            -0.0003564605473681252,
+            0.00047958563698297096
+          ]
+        }
+      }
+    },
+    {
+      "intercept_policy": "latest",
+      "n": 5403,
+      "baseline": {
+        "logloss": 0.2643878693256296,
+        "brier": 0.06870447859613917,
+        "equal_shooter_logloss": 0.2503925861951363,
+        "equal_shooter_brier": 0.06406852088500518
+      },
+      "comparisons": {
+        "goalie_allowed": {
+          "scores": {
+            "logloss": 0.26441231167614276,
+            "brier": 0.06870766616153569,
+            "equal_shooter_logloss": 0.250353932026608,
+            "equal_shooter_brier": 0.0640661293999423
+          },
+          "delta_logloss": 2.4442350513231037e-05,
+          "relative_improvement_pct": -0.009244883502248342,
+          "goalie_cluster_interval": [
+            -0.00041174215070742147,
+            0.00048149735499813945
+          ],
+          "shooter_cluster_interval": [
+            -0.00038577351817845783,
+            0.00046640650271237704
+          ]
+        },
+        "finite_goalie": {
+          "scores": {
+            "logloss": 0.26441231167614276,
+            "brier": 0.06870766616153569,
+            "equal_shooter_logloss": 0.250353932026608,
+            "equal_shooter_brier": 0.0640661293999423
+          },
+          "delta_logloss": 2.4442350513231037e-05,
+          "relative_improvement_pct": -0.009244883502248342,
+          "goalie_cluster_interval": [
+            -0.00041174215070742147,
+            0.00048149735499813945
+          ],
+          "shooter_cluster_interval": [
+            -0.00038577351817845783,
+            0.00046640650271237704
+          ]
+        }
+      }
+    }
+  ],
+  "sensitivity": [
+    {
+      "scenario": "no_goalie",
+      "goalie_penalty": null,
+      "shooter_penalty": 30.0,
+      "median_absolute_goals_per_100_change": 0.0,
+      "maximum_absolute_goals_per_100_change": 0.0,
+      "rank_correlation": 1.0,
+      "median_conditional_goalie_variance_reduction": null,
+      "goalie_intervals_excluding_zero": null
+    },
+    {
+      "scenario": "goalie_sd_0.1",
+      "goalie_penalty": 100.0,
+      "shooter_penalty": 30.0,
+      "median_absolute_goals_per_100_change": 0.004550240741728329,
+      "maximum_absolute_goals_per_100_change": 0.014405521711090274,
+      "rank_correlation": 0.9994397759103643,
+      "median_conditional_goalie_variance_reduction": 0.052122644165717436,
+      "goalie_intervals_excluding_zero": 0
+    },
+    {
+      "scenario": "goalie_sd_0.25",
+      "goalie_penalty": 16.0,
+      "shooter_penalty": 30.0,
+      "median_absolute_goals_per_100_change": 0.017906314263216316,
+      "maximum_absolute_goals_per_100_change": 0.04820301454075415,
+      "rank_correlation": 0.9977591036414567,
+      "median_conditional_goalie_variance_reduction": 0.244934442596361,
+      "goalie_intervals_excluding_zero": 0
+    },
+    {
+      "scenario": "goalie_sd_0.5",
+      "goalie_penalty": 4.0,
+      "shooter_penalty": 30.0,
+      "median_absolute_goals_per_100_change": 0.03357095483515482,
+      "maximum_absolute_goals_per_100_change": 0.09231690397863701,
+      "rank_correlation": 0.996358543417367,
+      "median_conditional_goalie_variance_reduction": 0.5891593393898789,
+      "goalie_intervals_excluding_zero": 1
+    },
+    {
+      "scenario": "goalie_sd_1",
+      "goalie_penalty": 1.0,
+      "shooter_penalty": 30.0,
+      "median_absolute_goals_per_100_change": 0.042538677531114844,
+      "maximum_absolute_goals_per_100_change": 0.12920714739967226,
+      "rank_correlation": 0.988515406162465,
+      "median_conditional_goalie_variance_reduction": 0.8419023605782004,
+      "goalie_intervals_excluding_zero": 3
+    }
+  ],
+  "max_fit_gradient": 8.260517359026665e-08
+}

@@ -1,0 +1,12 @@
+__pycache__/
+.venv*/
+.ipynb_checkpoints/
+.DS_Store
+kernel-ipc-*
+review/
+
+# Publish the final deliverable and its goalie supplement.
+analysis/*
+!analysis/goalie_sufficiency/
+analysis/goalie_sufficiency/*.log
+analysis/goalie_sufficiency/design_review.md

@@ -1,0 +1,31 @@
+{
+  "source": "data/raw/shot-data.csv",
+  "sha256": "25e5ea674e57f838f21062059630db795699d8499cf6af03699628df1b5c8af2",
+  "source_note": "Original supplied CSV, retained byte-for-byte in the bundle. This historical ridge/MAP analysis uses all 13,269 rows; the final notebook uses 13,224 cleaned rows and a Bayesian model.",
+  "target": "Goal probability per recorded attempt, including blocks and misses.",
+  "model": "logit(p) = training-season intercept + pooled shooter effect + optional pooled goalie effect.",
+  "objective": "Binomial negative log likelihood + 0.5 * penalty * sum(effect squared).",
+  "grid": [
+    0.3,
+    1.0,
+    3.0,
+    10.0,
+    30.0,
+    100.0,
+    300.0,
+    1000.0,
+    null
+  ],
+  "seed": 20260927,
+  "validation": "Expanding windows. Test 2023 after tuning on 2021->2022. Test 2024 after tuning on 2021->2022 and 2021:2022->2023; equal fold weighting. Each arm tunes shooter penalty separately. Primary loss: mean shot log loss.",
+  "future_intercept": "Carry latest training-season intercept; exposure-weighted average intercept sensitivity.",
+  "unknown_identity": "Zero identity effect, with the same training-only intercept.",
+  "limitations": [
+    "Exploratory historical validation; these years were previously inspected.",
+    "Only four season labels and no dates/games; within-season forecasting is unavailable.",
+    "2024 coverage is smaller and may be incomplete.",
+    "Missing shot context and team means a goalie effect is an opponent association, not isolated stopping talent.",
+    "Cluster intervals condition on fitted models/selection, resample one identity dimension at a time, and cannot recover missing game dependence.",
+    "Ridge strengths selected for prediction are not estimates of population talent variance."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "database": "Original NHL DuckDB archive (upstream source; compact input snapshots are bundled)",
+  "queries": {
+    "nhl_seasons.csv": "SELECT CAST(playerId AS VARCHAR) player_id, season, name, team, position, games_played games, icetime/60.0 AS minutes, I_F_shotAttempts attempts,I_F_goals goals,I_F_oZoneShiftStarts oz_starts,I_F_dZoneShiftStarts dz_starts FROM mp_skaters_seasons WHERE situation='5on5' AND season BETWEEN 2018 AND 2025 ORDER BY season,playerId",
+    "nhl_birth_dates.csv": "SELECT DISTINCT CAST(playerId AS VARCHAR) player_id,birthDate FROM nhl_stats_skater_bios ORDER BY player_id",
+    "nhl_2024_player_games.csv": "SELECT CAST(playerId AS BIGINT) player_id,name,nhl_game_id game_id,gameDate,playerTeam team,position,icetime/60.0 AS minutes,I_F_shotAttempts attempts,I_F_goals goals FROM mp_skaters_games WHERE season=2024 AND situation='5on5' ORDER BY nhl_game_id,playerId"
+  },
+  "all_situations_source": "Aggregated original MoneyPuck player-game counts into player-season halves; see README.md in this directory for coverage and source caveats.",
+  "sha256": {
+    "nhl_2024_player_games.csv": "444412a60bf7e14fb00793d4ab97b86334144e24bb11bca0a70504dc6cdddf2e",
+    "nhl_seasons.csv": "693545d8942a0ca119c3bf94fe53d39f3e5f8e0d5c7c081de2d5e566fa67d84f",
+    "nhl_birth_dates.csv": "dc2e999e8496fd6a22f80d835a5df2a206d140bddc97b0c1a1f1bb0898450e9c",
+    "nhl_all_situations_halves.csv": "5360d3e7006183ffd705e575e03984128c1e7cc56383835959079d9bbb8c0341"
+  }
+}
